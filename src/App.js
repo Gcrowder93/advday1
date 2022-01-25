@@ -1,21 +1,22 @@
 import './App.css';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getExcuses } from './services/excuses';
+import ExcuseList from './Components/excuseList';
 
-function App() {
+export default function App() {
+  const [excuses, setExcuse] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const excuseData = await getExcuses();
-      console.log(excuseData);
+      const data = await getExcuses();
+      setExcuse(data);
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="App">
-      <h1>abc</h1>
+      <h1>Which excuse fits best</h1>
+      <ExcuseList {...{ excuses }} />
     </div>
   );
 }
-
-export default App;
