@@ -5,6 +5,7 @@ export default function Controls({ query, setQuery }) {
     <div>
       <input
         type="text"
+        placeholder="Search.."
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
