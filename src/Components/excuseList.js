@@ -1,16 +1,14 @@
 import React from 'react';
 
-export default function ExcuseList({ excuses }) {
+export default function ExcuseList({ filterExcuses }) {
   return (
     <>
       <div>
-        {excuses.map((excuse) => (
+        {filterExcuses.map((excuse) => (
           <p key={excuse.id}>{excuse.excuse}</p>
         ))}
       </div>
-      <div>
-        <button onClick={excuses.category}>list page</button>
-      </div>
+      <div>{/* <button onClick={excuses.category}>list page</button> */}</div>
     </>
   );
 }
