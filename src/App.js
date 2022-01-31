@@ -21,7 +21,7 @@ export default function App() {
     }
   }, [loading]);
   const filterExcuses = excuses.filter(
-    (excuses) => excuses.category.toLowerCase().includes(query) || excuses.category.includes(query)
+    (excuse) => excuse.category.toLowerCase().includes(query) || excuse.category.includes(query)
   );
 
   return (
