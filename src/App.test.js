@@ -2,13 +2,13 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-import excuses from './Data/Data';
+import mockResponse from './Data/Data';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
 const server = setupServer(
   rest.get(`https://excuser.herokuapp.com/v1/excuse/10`, (req, res, ctx) => {
-    return res(ctx.json(excuses));
+    return res(ctx.json(mockResponse));
   })
 );
 
