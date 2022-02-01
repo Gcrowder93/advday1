@@ -2,6 +2,20 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
+import mockResponse from './Data/Data';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+const server = setupServer(
+  rest.get(`https://excuser.herokuapp.com/v1/excuse/10`, (req, res, ctx) => {
+    return res(ctx.json(mockResponse));
+  })
+);
+
+beforeAll(() => server.listen());
+
+afterAll(() => server.close());
+
 test('Should render the header', async () => {
   render(<App />);
 
